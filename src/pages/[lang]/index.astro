@@ -30,12 +30,12 @@ const allPosts = (await getCollection("blog"))
 const initialPosts = allPosts.slice(0, 6);
 ---
 
-<MainLayout title="Soren | AI Researcher">
+<MainLayout title="Soren | AI Researcher" lang={lang}>
     <!-- Section 1: Full-screen Hero -->
-    <Hero />
+    <Hero lang={lang} />
 
     <!-- Section 2: CV / About -->
-    <CVSection />
+    <CVSection lang={lang} />
 
     <!-- Section 3: Infinite Scroll Posts -->
     <InfinitePostGrid

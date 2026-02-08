@@ -1,4 +1,52 @@
 ---
-// Redirect to default language
-return Astro.redirect("/en/");
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import CVSection from "../components/CVSection.astro";
+import InfinitePostGrid from "../components/InfinitePostGrid";
+import { getCollection } from "astro:content";
+import { getPreferredLangFromHeader } from "../i18n/utils";
+
+export const prerender = false;
+
+const lang = getPreferredLangFromHeader(
+    Astro.request.headers.get("accept-language"),
+);
+
+// Get all blog posts
+const allPosts = (await getCollection("blog"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .map((post) => ({
+        id: post.id,
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.pubDate.toISOString(),
+        tags: post.data.tags || [],
+        heroImage: post.data.heroImage || undefined,
+    }));
+
+// Initial posts to show (first 6)
+const initialPosts = allPosts.slice(0, 6);
 ---
+
+<MainLayout title="Soren | AI Researcher" lang={lang}>
+    <!-- Section 1: Full-screen Hero -->
+    <Hero lang={lang} />
+
+    <!-- Section 2: CV / About -->
+    <CVSection lang={lang} />
+
+    <!-- Section 3: Infinite Scroll Posts -->
+    <InfinitePostGrid
+        client:load
+        initialPosts={initialPosts}
+        allPosts={allPosts}
+        lang={lang}
+    />
+</MainLayout>
+
+<style>
+    /* Smooth scroll behavior */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+</style>

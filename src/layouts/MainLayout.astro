@@ -12,15 +12,17 @@ interface Props {
     title: string;
     description?: string;
     image?: string;
+    lang?: 'en' | 'zh';
 }
 
 const {
     title,
     description = "A minimalist ACGN blog.",
     image = "/og-image.jpg",
+    lang: langFromProps,
 } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
+const lang = langFromProps ?? getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navItems = [
