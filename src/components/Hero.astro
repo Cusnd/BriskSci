@@ -1,0 +1,192 @@
+---
+// Full-screen Hero - reads from config/site.yaml
+import { getConfig } from "../config";
+import { getLangFromUrl } from "../i18n/utils";
+import { Github, Twitter, Mail, Linkedin } from "lucide-astro";
+
+const lang = getLangFromUrl(Astro.url);
+const config = getConfig(lang);
+---
+
+<section
+    class="hero-section min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden"
+>
+    <!-- Floating background decorations -->
+    <div
+        class="floating-sakura absolute top-20 left-10 text-6xl opacity-20 select-none"
+    >
+        🌸
+    </div>
+    <div
+        class="floating-star absolute bottom-32 right-10 text-4xl opacity-20 select-none"
+    >
+        ✨
+    </div>
+    <div
+        class="floating-sakura absolute top-1/3 right-20 text-3xl opacity-10 select-none"
+        style="animation-delay: 2s;"
+    >
+        🌸
+    </div>
+
+    <div class="z-10 px-4 flex-1 flex flex-col justify-center">
+        <div class="mb-8 relative inline-block mx-auto">
+            <div
+                class="avatar-container w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-xl overflow-hidden glass"
+            >
+                <img
+                    src={config.site.avatar}
+                    alt="Avatar"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+            <div
+                class="absolute -bottom-2 -right-2 bg-white text-2xl p-2 rounded-full shadow-md"
+            >
+                🌸
+            </div>
+        </div>
+
+        <h1
+            class="text-4xl md:text-6xl font-serif font-bold text-slate-800 mb-4 tracking-tight"
+        >
+            Hello, I'm <span class="name-highlight text-sakura-dark"
+                >{config.site.author}</span
+            >
+        </h1>
+
+        <p
+            class="text-lg md:text-xl text-slate-500 max-w-xl mx-auto mb-4 font-serif leading-relaxed"
+        >
+            {config.profile.title}
+        </p>
+
+        <p
+            class="text-base text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed"
+        >
+            {config.profile.tagline}
+        </p>
+
+        <div class="flex gap-4 justify-center">
+            {
+                config.social.github && (
+                    <a
+                        href={config.social.github}
+                        target="_blank"
+                        class="social-link p-3 rounded-full bg-white/50 border border-white/60 text-slate-600"
+                        aria-label="GitHub"
+                    >
+                        <Github size={20} />
+                    </a>
+                )
+            }
+            {
+                config.social.twitter && (
+                    <a
+                        href={config.social.twitter}
+                        target="_blank"
+                        class="social-link p-3 rounded-full bg-white/50 border border-white/60 text-slate-600"
+                        aria-label="Twitter"
+                    >
+                        <Twitter size={20} />
+                    </a>
+                )
+            }
+            {
+                config.social.linkedin && (
+                    <a
+                        href={config.social.linkedin}
+                        target="_blank"
+                        class="social-link p-3 rounded-full bg-white/50 border border-white/60 text-slate-600"
+                        aria-label="LinkedIn"
+                    >
+                        <Linkedin size={20} />
+                    </a>
+                )
+            }
+            {
+                config.social.email && (
+                    <a
+                        href={`mailto:${config.social.email}`}
+                        class="social-link p-3 rounded-full bg-white/50 border border-white/60 text-slate-600"
+                        aria-label="Email"
+                    >
+                        <Mail size={20} />
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    /* Floating animations */
+    .floating-sakura {
+        animation: float-sakura 6s ease-in-out infinite;
+    }
+
+    .floating-star {
+        animation: float-star 5s ease-in-out infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes float-sakura {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-15px) rotate(5deg);
+        }
+    }
+
+    @keyframes float-star {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-10px) rotate(-5deg);
+        }
+    }
+
+    /* Avatar hover */
+    .avatar-container {
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .avatar-container:hover {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    /* Name hover */
+    .name-highlight {
+        display: inline-block;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .name-highlight:hover {
+        transform: scale(1.05);
+    }
+
+    /* Social links */
+    .social-link {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .social-link:hover {
+        transform: scale(1.15) translateY(-5px);
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 10px 30px -10px rgba(248, 113, 113, 0.4);
+        color: #f87171;
+    }
+
+    .social-link:active {
+        transform: scale(0.95);
+    }
+</style>

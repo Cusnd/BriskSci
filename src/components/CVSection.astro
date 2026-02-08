@@ -1,0 +1,182 @@
+---
+// CV Section - reads from config/site.yaml
+import { getConfig } from "../config";
+import { getLangFromUrl } from "../i18n/utils";
+import { GraduationCap, Briefcase, BookOpen, Award, Code } from "lucide-astro";
+
+const lang = getLangFromUrl(Astro.url);
+const config = getConfig(lang);
+---
+
+<section id="about" class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2
+                class="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4"
+            >
+                About Me
+            </h2>
+            <p class="text-slate-500 max-w-2xl mx-auto">
+                Passionate about pushing the boundaries of AI to create
+                meaningful impact.
+            </p>
+        </div>
+
+        <!-- Research Interests -->
+        <div class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 rounded-xl bg-sakura-light/30 text-sakura-dark">
+                    <BookOpen size={24} />
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">
+                    Research Interests
+                </h3>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                {
+                    config.research_interests.map((tag) => (
+                        <span class="px-4 py-2 rounded-full bg-white/70 border border-slate-200 text-slate-700 text-sm font-medium shadow-sm">
+                            {tag}
+                        </span>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Education & Experience Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- Education -->
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 rounded-xl bg-blue-100 text-blue-600">
+                        <GraduationCap size={24} />
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Education</h3>
+                </div>
+                <div class="space-y-4">
+                    {
+                        config.education.map((edu) => (
+                            <div
+                                class={`border-l-2 pl-4 ${edu.current ? "border-sakura-dark" : "border-slate-200"}`}
+                            >
+                                <p class="font-bold text-slate-800">
+                                    {edu.degree}
+                                </p>
+                                <p class="text-slate-500 text-sm">
+                                    {edu.school} • {edu.period}
+                                </p>
+                                {edu.note && (
+                                    <p class="text-slate-600 text-sm mt-1">
+                                        {edu.note}
+                                    </p>
+                                )}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="glass p-6 rounded-2xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 rounded-xl bg-purple-100 text-purple-600">
+                        <Briefcase size={24} />
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">Experience</h3>
+                </div>
+                <div class="space-y-4">
+                    {
+                        config.experience.map((exp) => (
+                            <div
+                                class={`border-l-2 pl-4 ${exp.current ? "border-sakura-dark" : "border-slate-200"}`}
+                            >
+                                <p class="font-bold text-slate-800">
+                                    {exp.title}
+                                </p>
+                                <p class="text-slate-500 text-sm">
+                                    {exp.company} • {exp.period}
+                                </p>
+                                {exp.description && (
+                                    <p class="text-slate-600 text-sm mt-1">
+                                        {exp.description}
+                                    </p>
+                                )}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 rounded-xl bg-green-100 text-green-600">
+                    <Code size={24} />
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">
+                    Technical Skills
+                </h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {
+                    config.skills.map((skill) => (
+                        <div class="glass p-4 rounded-xl text-center">
+                            <p class="font-bold text-slate-800 mb-2">
+                                {skill.name}
+                            </p>
+                            <div class="w-full bg-slate-100 rounded-full h-1.5">
+                                <div
+                                    class="bg-sakura-dark h-1.5 rounded-full"
+                                    style={`width: ${skill.level}%`}
+                                />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Publications -->
+        <div>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 rounded-xl bg-amber-100 text-amber-600">
+                    <Award size={24} />
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">
+                    Selected Publications
+                </h3>
+            </div>
+            <div class="space-y-4">
+                {
+                    config.publications.map((pub) => (
+                        <div class="glass p-5 rounded-xl">
+                            <p class="font-bold text-slate-800 mb-1">
+                                {pub.link ? (
+                                    <a
+                                        href={pub.link}
+                                        target="_blank"
+                                        class="hover:text-sakura-dark transition-colors"
+                                    >
+                                        {pub.title} ↗
+                                    </a>
+                                ) : (
+                                    pub.title
+                                )}
+                            </p>
+                            <p class="text-slate-500 text-sm mb-2">
+                                {pub.venue} • {pub.role}
+                            </p>
+                            {pub.description && (
+                                <p class="text-slate-600 text-sm">
+                                    {pub.description}
+                                </p>
+                            )}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

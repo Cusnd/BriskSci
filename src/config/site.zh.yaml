@@ -1,0 +1,83 @@
+# ==========================================
+# 🌸 NijigenBlog 配置文件 (中文)
+# ==========================================
+
+# 基本信息
+site:
+  title: "Soren的博客"
+  description: "探索AI研究与创意的极简博客"
+  author: "Soren"
+  avatar: "https://api.dicebear.com/7.x/notionists/svg?seed=Sakura"
+
+# 社交链接
+social:
+  github: "https://github.com/elonmusk"
+  twitter: "https://twitter.com/elonmusk"
+  email: "cusofer@gmail.com"
+
+# 个人简介
+profile:
+  title: "AI 研究员 & 开发者"
+  tagline: "探索人工智能、人类认知与创意表达的交汇点。"
+
+# 研究兴趣
+research_interests:
+  - "大语言模型"
+  - "强化学习"
+  - "计算机视觉"
+  - "AI 对齐"
+  - "多模态学习"
+  - "神经架构搜索"
+
+# 教育经历
+education:
+  - degree: "计算机科学与技术 学士"
+    school: "吉利学院"
+    period: "2023 - 至今"
+    note: "个人研究方向：AI 与机器学习"
+    current: true
+
+# 工作经历
+experience:
+  - title: "研究实习生"
+    company: "OpenAI"
+    period: "2024年夏季"
+    description: "大语言模型对齐研究"
+    current: true
+  
+  - title: "研究助理"
+    company: "清华大学 NLP 实验室"
+    period: "2022 - 2024"
+    description: "自然语言处理与知识图谱"
+    current: false
+
+# 技能 (0-100)
+skills:
+  - name: "Python"
+    level: 95
+  - name: "PyTorch"
+    level: 90
+  - name: "TensorFlow"
+    level: 85
+  - name: "JAX"
+    level: 75
+  - name: "CUDA"
+    level: 70
+  - name: "TypeScript"
+    level: 80
+  - name: "React"
+    level: 75
+  - name: "Docker"
+    level: 70
+
+# 代表性论文
+publications:
+  - title: "Towards More Robust Language Models"
+    venue: "ACL 2024"
+    role: "第一作者"
+    description: "通过对抗训练提高大模型鲁棒性的新方法"
+  
+  - title: "Multi-modal Learning with Vision-Language Models"
+    venue: "NeurIPS 2023"
+    role: "共同作者"
+    description: "探索大规模视觉语言模型的跨模态表示"

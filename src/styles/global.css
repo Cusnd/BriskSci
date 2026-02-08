@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Soft, refined palette */
+  --color-sakura: #fecaca;
+  --color-sakura-light: #ffdee2;
+  --color-sakura-dark: #f87171;
+  --color-primary: var(--color-sakura);
+  --color-background: #fafafa;
+
+  
+  /* Fonts */
+  --font-serif: "Noto Serif SC", serif;
+  --font-sans: "Noto Serif SC", serif;
+
+  /* Float animation for decorative elements */
+  --animate-float: float 8s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+  }
+}
+
+@layer utilities {
+
+  /* Glass morphism - Apple style (subtle) */
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(120%) blur(12px);
+    -webkit-backdrop-filter: saturate(120%) blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 40px rgba(254, 202, 202, 0.4);
+  }
+}
+
+/* ========================================
+   Apple-Sense Base Styles
+   ======================================== */
+
+html {
+  background-color: var(--color-background);
+  color: #1d1d1f;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(255, 222, 226, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(255, 222, 226, 0.2) 0%, transparent 50%);
+  min-height: 100vh;
+}
+
+/* ========================================
+   View Transitions - Apple-style crossfade
+   ======================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   Hover Effects - Refined & Subtle
+   ======================================== */
+
+/* Cards only - not blog post article content */
+.glass {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Links - color only, no movement */
+a {
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cards hover - very subtle lift, no shadow animation */
+.glass:hover {
+  transform: translateY(-2px);
+}
+
+/* Interactive elements - gentle press feedback */
+button,
+.btn,
+[role="button"] {
+  transition:
+    transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.15s ease;
+}
+
+button:active,
+.btn:active,
+[role="button"]:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* ========================================
+   Staggered Delays (for manual use)
+   ======================================== */
+
+.delay-1 {
+  transition-delay: 50ms;
+}
+
+.delay-2 {
+  transition-delay: 100ms;
+}
+
+.delay-3 {
+  transition-delay: 150ms;
+}
+
+.delay-4 {
+  transition-delay: 200ms;
+}
+
+.delay-5 {
+  transition-delay: 250ms;
+}
+
+/* ========================================
+   Focus States - Accessibility
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-sakura-dark);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   Selection
+   ======================================== */
+
+::selection {
+  background: var(--color-sakura);
+  color: #1d1d1f;
+}

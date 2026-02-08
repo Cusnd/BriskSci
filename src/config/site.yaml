@@ -1,0 +1,94 @@
+# ==========================================
+# 🌸 NijigenBlog 配置文件
+# 编辑这个文件来自定义你的博客
+# ==========================================
+
+# 基本信息
+site:
+  title: "Soren's Blog"
+  description: "A minimalist blog for AI research and creative exploration."
+  author: "Soren"
+  avatar: "https://api.dicebear.com/7.x/notionists/svg?seed=Sakura"
+
+# 社交链接
+social:
+  github: "https://github.com/elonmusk"
+  twitter: "https://twitter.com/elonmusk"
+  email: "cusofer@gmail.com"
+  # 可以添加更多：
+  # linkedin: "https://linkedin.com/in/yourusername"
+  # google_scholar: "https://scholar.google.com/..."
+
+# 个人简介
+profile:
+  title: "AI Researcher & Developer"
+  tagline: "Exploring the intersection of artificial intelligence, human cognition, and creative expression."
+
+# 研究兴趣（标签形式）
+research_interests:
+  - "Large Language Models"
+  - "Reinforcement Learning"
+  - "Computer Vision"
+  - "AI Alignment"
+  - "Multi-modal Learning"
+  - "Neural Architecture Search"
+
+# 教育经历
+education:
+  - degree: "Ph.D. in Computer Science"
+    school: "Stanford University"
+    period: "2024 - Present"
+    note: "Focus: AI & Machine Learning"
+    current: true  # 标记为当前
+  
+  - degree: "B.S. in Computer Science"
+    school: "Tsinghua University"
+    period: "2020 - 2024"
+    note: "GPA: 3.9/4.0"
+    current: false
+
+# 工作/实习经历
+experience:
+  - title: "Research Intern"
+    company: "OpenAI"
+    period: "Summer 2024"
+    description: "LLM alignment research"
+    current: true
+  
+  - title: "Research Assistant"
+    company: "THUNLP Lab"
+    period: "2022 - 2024"
+    description: "NLP & Knowledge Graphs"
+    current: false
+
+# 技能（0-100）
+skills:
+  - name: "Python"
+    level: 95
+  - name: "PyTorch"
+    level: 90
+  - name: "TensorFlow"
+    level: 85
+  - name: "JAX"
+    level: 75
+  - name: "CUDA"
+    level: 70
+  - name: "TypeScript"
+    level: 80
+  - name: "React"
+    level: 75
+  - name: "Docker"
+    level: 70
+
+# 代表性论文
+publications:
+  - title: "Towards More Robust Language Models"
+    venue: "ACL 2024"
+    role: "First Author"
+    description: "A novel approach to improving LLM robustness through adversarial training."
+    # link: "https://arxiv.org/abs/..."  # 可选：论文链接
+  
+  - title: "Multi-modal Learning with Vision-Language Models"
+    venue: "NeurIPS 2023"
+    role: "Co-Author"
+    description: "Exploring cross-modal representations in large-scale VLMs."

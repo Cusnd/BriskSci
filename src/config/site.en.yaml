@@ -1,0 +1,89 @@
+# ==========================================
+# 🌸 NijigenBlog Config (English)
+# ==========================================
+
+# Basic Info
+site:
+  title: "Soren's Blog"
+  description: "A minimalist blog for AI research and creative exploration."
+  author: "Soren"
+  avatar: "https://api.dicebear.com/7.x/notionists/svg?seed=Sakura"
+
+# Social Links
+social:
+  github: "https://github.com/elonmusk"
+  twitter: "https://twitter.com/elonmusk"
+  email: "cusofer@gmail.com"
+
+# Profile
+profile:
+  title: "AI Researcher & Developer"
+  tagline: "Exploring the intersection of artificial intelligence, human cognition, and creative expression."
+
+# Research Interests
+research_interests:
+  - "Large Language Models"
+  - "Reinforcement Learning"
+  - "Computer Vision"
+  - "AI Alignment"
+  - "Multi-modal Learning"
+  - "Neural Architecture Search"
+
+# Education
+education:
+  - degree: "Ph.D. in Computer Science"
+    school: "Stanford University"
+    period: "2024 - Present"
+    note: "Focus: AI & Machine Learning"
+    current: true
+  
+  - degree: "B.S. in Computer Science"
+    school: "Tsinghua University"
+    period: "2020 - 2024"
+    note: "GPA: 3.9/4.0"
+    current: false
+
+# Experience
+experience:
+  - title: "Research Intern"
+    company: "OpenAI"
+    period: "Summer 2024"
+    description: "LLM alignment research"
+    current: true
+  
+  - title: "Research Assistant"
+    company: "THUNLP Lab"
+    period: "2022 - 2024"
+    description: "NLP & Knowledge Graphs"
+    current: false
+
+# Skills (0-100)
+skills:
+  - name: "Python"
+    level: 95
+  - name: "PyTorch"
+    level: 90
+  - name: "TensorFlow"
+    level: 85
+  - name: "JAX"
+    level: 75
+  - name: "CUDA"
+    level: 70
+  - name: "TypeScript"
+    level: 80
+  - name: "React"
+    level: 75
+  - name: "Docker"
+    level: 70
+
+# Publications
+publications:
+  - title: "Towards More Robust Language Models"
+    venue: "ACL 2024"
+    role: "First Author"
+    description: "A novel approach to improving LLM robustness through adversarial training."
+  
+  - title: "Multi-modal Learning with Vision-Language Models"
+    venue: "NeurIPS 2023"
+    role: "Co-Author"
+    description: "Exploring cross-modal representations in large-scale VLMs."

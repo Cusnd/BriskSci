@@ -1,0 +1,99 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { ExternalLink, Bookmark } from "lucide-react";
+import { languages } from "../../i18n/ui";
+
+export function getStaticPaths() {
+    return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const bookmarks = [
+    {
+        category: "Design",
+        items: [
+            {
+                title: "Astro",
+                desc: "The web framework for content-driven websites.",
+                url: "https://astro.build",
+            },
+            {
+                title: "Tailwind CSS",
+                desc: "Rapidly build modern websites without ever leaving your HTML.",
+                url: "https://tailwindcss.com",
+            },
+            {
+                title: "Framer Motion",
+                desc: "A production-ready motion library for React.",
+                url: "https://www.framer.com/motion/",
+            },
+        ],
+    },
+    {
+        category: "Inspiration",
+        items: [
+            {
+                title: "Awwwards",
+                desc: "The awards for design, creativity and innovation on the Internet.",
+                url: "https://www.awwwards.com",
+            },
+            {
+                title: "Dribbble",
+                desc: "Discover the world’s top designers & creatives.",
+                url: "https://dribbble.com",
+            },
+        ],
+    },
+];
+---
+
+<MainLayout title="Saved | Soren">
+    <section class="max-w-4xl mx-auto">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-serif font-bold text-slate-800 mb-4">
+                Saved References
+            </h1>
+            <p class="text-slate-500 max-w-lg mx-auto">
+                Tools, resources, and infinite inspiration.
+            </p>
+        </header>
+
+        <div class="space-y-12">
+            {
+                bookmarks.map((section) => (
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold text-slate-800 mb-6 flex items-center gap-2">
+                            <Bookmark className="text-sakura-dark" size={24} />
+                            {section.category}
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {section.items.map((item) => (
+                                <a
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="group block glass p-5 rounded-xl hover:-translate-y-1 transition-transform duration-300"
+                                >
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-bold text-slate-800 group-hover:text-sakura-dark transition-colors">
+                                            {item.title}
+                                        </h3>
+                                        <ExternalLink
+                                            size={16}
+                                            className="text-slate-400 group-hover:text-sakura-dark"
+                                        />
+                                    </div>
+                                    <p class="text-sm text-slate-500">
+                                        {item.desc}
+                                    </p>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</MainLayout>

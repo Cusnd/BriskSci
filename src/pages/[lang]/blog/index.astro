@@ -1,0 +1,95 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { formatDate } from "../../../utils/date";
+import { languages } from "../../../i18n/ui";
+
+export function getStaticPaths() {
+    return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<MainLayout title="Blog | Soren">
+    <section class="max-w-4xl mx-auto">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-serif font-bold text-slate-800 mb-4">
+                Writings
+            </h1>
+            <p class="text-slate-500 max-w-lg mx-auto">
+                Thoughts, tutorials, and stories from my journey.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 gap-8">
+            {
+                posts.map((post) => (
+                    <a
+                        href={`/${lang}/blog/${post.id}/`}
+                        class="group block"
+                    >
+                        <article class="glass p-6 md:p-8 rounded-3xl relative overflow-hidden flex flex-col md:flex-row gap-6">
+                            {/* Image Placeholder (if image exists) */}
+                            <div class="w-full md:w-48 h-32 bg-sakura-light/20 rounded-xl flex items-center justify-center text-sakura text-4xl overflow-hidden">
+                                {post.data.heroImage ? (
+                                    <img
+                                        src={post.data.heroImage}
+                                        alt=""
+                                        class="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <span>🌸</span>
+                                )}
+                            </div>
+
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2 text-xs font-serif text-slate-400">
+                                    <time
+                                        datetime={post.data.pubDate.toISOString()}
+                                    >
+                                        {post.data.pubDate.toLocaleDateString(
+                                            "en-us",
+                                            {
+                                                year: "numeric",
+                                                month: "short",
+                                                day: "numeric",
+                                            },
+                                        )}
+                                    </time>
+                                    {post.data.tags && (
+                                        <>
+                                            <span>•</span>
+                                            <div class="flex gap-2">
+                                                {post.data.tags.map((tag) => (
+                                                    <span class="text-sakura-dark font-medium">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+
+                                <h2 class="text-2xl font-bold text-slate-800 mb-3 group-hover:text-sakura-dark transition-colors">
+                                    {post.data.title}
+                                </h2>
+                                <p class="text-slate-600 line-clamp-2 leading-relaxed">
+                                    {post.data.description}
+                                </p>
+
+                                <div class="mt-4 text-sm font-medium text-sakura-dark opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
+                                    Read Article &rarr;
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+</MainLayout>

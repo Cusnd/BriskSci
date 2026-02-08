@@ -1,0 +1,80 @@
+---
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/700.css";
+import "@fontsource/noto-serif-sc/900.css";
+import "../styles/global.css";
+import FloatingToolbar from "../components/FloatingToolbar";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Header from "../components/Header";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+    title: string;
+    description?: string;
+    image?: string;
+}
+
+const {
+    title,
+    description = "A minimalist ACGN blog.",
+    image = "/og-image.jpg",
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = [
+    { href: `/${lang}/`, label: t("nav.home") },
+    {
+        href: `/${lang}/#about`,
+        label: t("nav.about"),
+    },
+    {
+        href: `/${lang}/blog/`,
+        label: t("nav.blog"),
+    },
+    {
+        href: `/${lang}/projects/`,
+        label: t("nav.projects"),
+    },
+    {
+        href: `/${lang}/mood/`,
+        label: t("nav.moods"),
+    },
+];
+---
+
+<!doctype html>
+<html lang={lang}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta property="og:image" content={image} />
+        <meta property="og:title" content={title} />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body
+        class="font-sans antialiased text-slate-800 selection:bg-sakura selection:text-white"
+    >
+        <!-- Background Grain/Texture (Optional, handled in CSS) -->
+
+        <Header client:load lang={lang} navItems={navItems} />
+
+        <main class="min-h-screen pt-24 pb-12 px-4 container mx-auto max-w-5xl">
+            <slot />
+        </main>
+
+        <footer class="py-8 text-center text-slate-400 text-xs font-serif">
+            <p>
+                &copy; {new Date().getFullYear()}
+                {t("footer.copyright")}
+            </p>
+        </footer>
+
+        <FloatingToolbar client:load currentLang={lang} />
+    </body>
+</html>
