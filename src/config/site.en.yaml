@@ -87,3 +87,26 @@ publications:
     venue: "NeurIPS 2023"
     role: "Co-Author"
     description: "Exploring cross-modal representations in large-scale VLMs."
+
+# Projects
+projects:
+  - title: "Nijigen Blog"
+    description: "A minimalist, high-performance blog theme built with Astro and React. Designed for ACGN enthusiasts with glassmorphism aesthetics."
+    tags: ["Astro", "React", "Tailwind"]
+    icon: "✨"
+    github: "https://github.com/elonmusk"
+    link: "#"
+
+  - title: "Sakura UI"
+    description: "A React component library inspired by Japanese aesthetics. Soft colors, glassmorphism, and smooth micro-animations."
+    tags: ["React", "Storybook", "Framer Motion"]
+    icon: "🌸"
+    github: "https://github.com/elonmusk"
+    link: "#"
+
+  - title: "AniTracker"
+    description: "An automated anime tracking tool that syncs with MyAnimeList and AniList APIs for seamless watchlist management."
+    tags: ["Python", "API", "Automation"]
+    icon: "🎌"
+    github: "https://github.com/elonmusk"
+    link: "#"

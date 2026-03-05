@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "../components/Hero.astro";
 import CVSection from "../components/CVSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
 import InfinitePostGrid from "../components/InfinitePostGrid";
 import { getCollection } from "astro:content";
 import { getPreferredLangFromHeader } from "../i18n/utils";
@@ -35,7 +36,10 @@ const initialPosts = allPosts.slice(0, 6);
     <!-- Section 2: CV / About -->
     <CVSection lang={lang} />
 
-    <!-- Section 3: Infinite Scroll Posts -->
+    <!-- Section 3: Projects -->
+    <ProjectsSection lang={lang} />
+
+    <!-- Section 4: Infinite Scroll Posts -->
     <InfinitePostGrid
         client:load
         initialPosts={initialPosts}

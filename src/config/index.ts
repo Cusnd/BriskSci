@@ -46,6 +46,14 @@ export interface SiteConfig {
         description?: string;
         link?: string;
     }>;
+    projects?: Array<{
+        title: string;
+        description: string;
+        tags: string[];
+        icon?: string;
+        github?: string;
+        link?: string;
+    }>;
 }
 
 export type Language = 'en' | 'zh';

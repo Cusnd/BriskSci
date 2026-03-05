@@ -81,3 +81,26 @@ publications:
     venue: "NeurIPS 2023"
     role: "共同作者"
     description: "探索大规模视觉语言模型的跨模态表示"
+
+# 开源项目
+projects:
+  - title: "Nijigen Blog"
+    description: "基于 Astro 和 React 构建的极简高性能博客主题，专为 ACGN 爱好者设计，采用玻璃拟态美学。"
+    tags: ["Astro", "React", "Tailwind"]
+    icon: "✨"
+    github: "https://github.com/elonmusk"
+    link: "#"
+
+  - title: "Sakura UI"
+    description: "受日式美学启发的 React 组件库。柔和配色、玻璃拟态设计与流畅微动效。"
+    tags: ["React", "Storybook", "Framer Motion"]
+    icon: "🌸"
+    github: "https://github.com/elonmusk"
+    link: "#"
+
+  - title: "AniTracker"
+    description: "自动化番剧追踪工具，与 MyAnimeList 和 AniList API 同步，轻松管理追番列表。"
+    tags: ["Python", "API", "Automation"]
+    icon: "🎌"
+    github: "https://github.com/elonmusk"
+    link: "#"
